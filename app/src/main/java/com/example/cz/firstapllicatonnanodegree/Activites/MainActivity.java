@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         get_popular_movies(page);
 
     }
-
+//
     private void InitEventDriven() {
         tv_toolbar.setText(R.string.popular);
         iv_left_arrow.setVisibility(View.GONE);
