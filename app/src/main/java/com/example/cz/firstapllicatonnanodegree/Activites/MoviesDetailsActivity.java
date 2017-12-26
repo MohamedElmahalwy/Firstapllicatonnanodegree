@@ -2,6 +2,7 @@ package com.example.cz.firstapllicatonnanodegree.Activites;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,7 +26,10 @@ public class MoviesDetailsActivity extends AppCompatActivity {
     TextView tv_overview;
     @BindView(R.id.iv_poster)
     ImageView iv_poster;
-
+    @BindView(R.id.tv_toolbar)
+    TextView tv_toolbar;
+    @BindView(R.id.iv_left_arrow)
+    ImageView iv_left_arrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,13 @@ public class MoviesDetailsActivity extends AppCompatActivity {
     }
 
     void set_values() {
+        tv_toolbar.setText(R.string.movie_details);
+        iv_left_arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         tv_movie_title_header.setText(getIntent().getStringExtra("title"));
         tv_relase_date.setText(getIntent().getStringExtra("realse_date"));
         tv_vote_average.setText(getIntent().getStringExtra("vote_average") + "/10");

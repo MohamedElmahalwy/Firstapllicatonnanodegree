@@ -5,14 +5,18 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -43,7 +47,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
-    String api_key = "Your Api Key";
+    String api_key = "aaa42517df175590be081931c26affa8";
     RequestQueue requestQueue;
     RecyclerView rv_movies;
     ArrayList<Movie_model> movies_array_list;
@@ -51,19 +55,28 @@ public class MainActivity extends AppCompatActivity {
     GridLayoutManager gridLayoutManager;
     LinearLayoutManager linearLayoutManager;
     int page = 1;
-
+    @BindView(R.id.tv_toolbar)
+    TextView tv_toolbar;
+    @BindView(R.id.iv_left_arrow)
+    ImageView iv_left_arrow;
+    int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         requestQueue = Volley.newRequestQueue(this);
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+        ButterKnife.bind(this);
         InitEventDriven();
         get_popular_movies(page);
 
     }
 
     private void InitEventDriven() {
+        tv_toolbar.setText(R.string.popular);
+        iv_left_arrow.setVisibility(View.GONE);
         rv_movies = (RecyclerView) findViewById(R.id.rv_movies);
         gridLayoutManager = new GridLayoutManager(this, 2);
         rv_movies.setLayoutManager(gridLayoutManager);
@@ -75,9 +88,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        id = item.getItemId();
+
         switch (item.getItemId()) {
             case R.id.popular:
-
+                tv_toolbar.setText(R.string.popular);
 
                 movies_array_list.clear();
                 movie_adpater.notifyDataSetChanged();
@@ -93,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "pop", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.top_reated:
-
+                tv_toolbar.setText(R.string.top_rated);
                 movies_array_list.clear();
                 movie_adpater.notifyDataSetChanged();
                 get_top_reated_movies(page);
