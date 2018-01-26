@@ -9,4 +9,13 @@
     <string name="average_vote">10</string>
     <string name="over__view">Over view</string>
     <string name="movie_details">Movie details</string>
+    <string name="add_to_fav">Add to favourit</string>
+    <string name="trailers">Trailers</string>
+    <string name="no_trailers">No Trailers</string>
+    <string name="no_reviews">No Reviews</string>
+    <string name="author">Author</string>
+    <string name="content">Content</string>
+    <string name="reviews">Reviews</string>
+    <string name="favourit">Favourit</string>
+    <string name="movie_add_to_fav">Movie added to favourites</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.cz.firstapllicatonnanodegree.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.example.cz.firstapllicatonnanodegree.R;
 import com.example.cz.firstapllicatonnanodegree.Utils.Connection;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -43,18 +45,23 @@ public class Movie_adpater extends RecyclerView.Adapter<Movie_adpater.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         Picasso.with(context).
-                load((Connection.image_url) + movies_array_list.get(position).getPoster()).
+                load( movies_array_list.get(position).getPosterPath()).
                 into(holder.iv_movie);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context.getApplicationContext(), MoviesDetailsActivity.class);
-                intent.putExtra("poster", movies_array_list.get(position).getPoster());
-                intent.putExtra("overview", movies_array_list.get(position).getOverview());
-                intent.putExtra("vote_average", movies_array_list.get(position).getVote_average());
-                intent.putExtra("title", movies_array_list.get(position).getTitle());
-                intent.putExtra("realse_date", movies_array_list.get(position).getRelease_date());
+//                intent.putExtra("poster", movies_array_list.get(position).getPoster());
+//                intent.putExtra("overview", movies_array_list.get(position).getOverview());
+//                intent.putExtra("vote_average", movies_array_list.get(position).getVote_average());
+//                intent.putExtra("title", movies_array_list.get(position).getTitle());
+//                intent.putExtra("realse_date", movies_array_list.get(position).getRelease_date());
+
+                intent.putExtra("movie", (Parcelable) movies_array_list.get(position));
+                intent.putExtra("intent","movie");
+
                 context.startActivity(intent);
+
 
             }
         });

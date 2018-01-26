@@ -3,18 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".activity.MainActivity"
-    >
+    tools:context=".activity.MainActivity">
 
-    <item android:title="@string/popular"
+    <item
         android:id="@+id/popular"
-android:visible="true"
-        app:showAsAction="never"
-        />
-
-    <item android:title="@string/top_rated"
-        android:id="@+id/top_reated"
+        android:title="@string/popular"
         android:visible="true"
-        app:showAsAction="never"
-        />
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/top_reated"
+        android:title="@string/top_rated"
+        android:visible="true"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/favourit"
+        android:title="@string/favourit"
+        android:visible="true"
+        app:showAsAction="never" />
+
 </menu>
